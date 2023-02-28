@@ -1,0 +1,32 @@
+requests = [...list of requests...]
+
+sort(requests, by start time)
+
+current_time = 9:00
+current_profit = 0
+
+for request in requests:
+    if request.start_time <= current_time:
+        continue
+    
+    if request.end_time > 17:00:
+        break
+    
+    if request.end_time <= 13:00:
+        current_profit += 1
+        current_time = request.end_time
+    
+    elif request.start_time >= 13:00:
+        current_profit += 2
+        current_time = request.end_time
+    
+    elif request.start_time < 13:00 and request.end_time > 13:00:
+        current_profit += 2
+        current_time = request.end_time
+    
+    elif request.start_time < 13:00 and request.end_time <= 13:00:
+        current_profit += 1
+        current_time = request.end_time
+
+return current_profit
+
